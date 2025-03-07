@@ -6,6 +6,7 @@ import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
 import GlassCard from '@/components/ui-custom/GlassCard';
 import AnimatedButton from '@/components/ui-custom/AnimatedButton';
+import SpeechToText from '@/components/ui-custom/SpeechToText';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -77,6 +78,10 @@ const SubmitComplaint = () => {
       
       navigate(`/track?id=${complaintId}`);
     }, 1500);
+  };
+
+  const handleTranscript = (text: string) => {
+    setFormData((prev) => ({ ...prev, description: text }));
   };
 
   const complaintTypes = [
@@ -205,7 +210,13 @@ const SubmitComplaint = () => {
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="description">Complaint Description</Label>
+                    <div className="flex items-center justify-between mb-1">
+                      <Label htmlFor="description">Complaint Description</Label>
+                      <div className="text-sm text-muted-foreground">
+                        or use voice input ↓
+                      </div>
+                    </div>
+                    
                     <Textarea
                       id="description"
                       name="description"
@@ -216,6 +227,18 @@ const SubmitComplaint = () => {
                       required
                       className="resize-none"
                     />
+                    
+                    {/* Voice Input Section */}
+                    <div className="mt-4 bg-muted/30 p-4 rounded-lg border border-muted">
+                      <h3 className="text-sm font-medium mb-3">Voice Input</h3>
+                      <p className="text-xs text-muted-foreground mb-3">
+                        Speak your complaint in your preferred language. Our AI will transcribe it for you.
+                      </p>
+                      <SpeechToText 
+                        onTranscript={handleTranscript}
+                        language={formData.language}
+                      />
+                    </div>
                   </div>
                   
                   <div className="space-y-4">

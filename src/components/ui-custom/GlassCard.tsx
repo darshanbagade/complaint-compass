@@ -17,9 +17,9 @@ const GlassCard = ({
   ...props
 }: GlassCardProps) => {
   const levelStyles = {
-    subtle: 'bg-white/40 backdrop-blur-xs border-white/10',
-    medium: 'bg-white/70 backdrop-blur-sm border-white/20',
-    heavy: 'bg-white/90 backdrop-blur-md border-white/30',
+    subtle: 'bg-white/40 dark:bg-slate-800/40 backdrop-blur-xs border-white/10 dark:border-slate-700/30',
+    medium: 'bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm border-white/20 dark:border-slate-700/40',
+    heavy: 'bg-white/90 dark:bg-slate-800/90 backdrop-blur-md border-white/30 dark:border-slate-700/50',
   };
 
   return (
