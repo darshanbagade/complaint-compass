@@ -46,8 +46,10 @@ const SubmitComplaint = () => {
     setSelectedFiles((prev) => prev.filter((_, i) => i !== index));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (e?: React.FormEvent) => {
+    if (e) {
+      e.preventDefault();
+    }
     setIsSubmitting(true);
     
     // Simulate form submission
