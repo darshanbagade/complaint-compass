@@ -4,8 +4,8 @@
 interface Window {
   SpeechRecognition: any;
   webkitSpeechRecognition: any;
-  AudioContext: AudioContext;
-  webkitAudioContext: AudioContext;
+  AudioContext: typeof AudioContext;
+  webkitAudioContext: typeof AudioContext;
 }
 
 interface SpeechRecognitionEvent extends Event {

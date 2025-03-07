@@ -95,8 +95,9 @@ const SpeechToText = ({ onTranscript, language, className }: SpeechToTextProps) 
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
         mediaStreamRef.current = stream;
         
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        audioContextRef.current = new AudioContext();
+        // Fix: Create AudioContext properly
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        audioContextRef.current = new AudioContextClass();
         analyserRef.current = audioContextRef.current.createAnalyser();
         
         const source = audioContextRef.current.createMediaStreamSource(stream);
